@@ -8,7 +8,9 @@ group = 'com.tasks.calculator'
 version = '0.0.1-SNAPSHOT'
 
 java {
-	sourceCompatibility = '17'
+	sourceCompatibility = JavaVersion.VERSION_21
+	targetCompatibility = JavaVersion.VERSION_21
+
 }
 
 configurations {
@@ -36,9 +38,17 @@ dependencies {
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	implementation 'org.hibernate:hibernate-core:6.4.4.Final'
 	runtimeOnly 'com.mysql:mysql-connector-j'
 	//runtimeOnly 'com.oracle.database.jdbc:ojdbc11'
 	annotationProcessor 'org.projectlombok:lombok'
+	//apache
+	implementation 'org.apache.commons:commons-lang3:3.12.0'
+	implementation 'org.apache.commons:commons-dbcp2:2.9.0'
+	//gson
+	implementation 'com.google.code.gson:gson:2.10.1'
+	implementation 'org.webjars:bootstrap:5.3.3'
+
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
 }
@@ -48,7 +58,26 @@ dependencyManagement {
 		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
 	}
 }
+tasks.named('test') {
+	useJUnitPlatform()
+}
+jar {
+	manifest {
+		attributes 'Main-Class': 'com.tasks.calculator.TaskCalculator'
+	}
+
+	from 'src/main/webapp', sourceSets.main.output
+
+	version = '0.1.0'
+
+}
+
 
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+springBoot {
+	mainClass = 'com.tasks.calculator.TaskCalculator'
+}
+

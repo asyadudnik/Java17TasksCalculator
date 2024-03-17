@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="ru">
+<head lang="en" th:include="fragments/header :: header(metaTitle='Tasks List')">
+        <title th:id="${metaTitle} ? ${metaTitle} : 'Tasks List'"></title>
+</head>
+
+<body>
+<div class="container mt-5">
+    <a href="/api/tasks/new">Create New Task</a>
+    <br/><br/>
+    <table class="table table-striped">
+        <thead class="table-header">
+        <tr>
+            <th>TaskNumber</th>
+            <th>TaskName</th>
+            <th>TaskDescription</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="task : ${tasks}">
+            <td th:text="${task.getNumber}">TaskNumber</td>
+            <td th:text="${task.getName}">TaskName</td>
+            <td th:text="${task.getDescription}">TaskDescription</td>
+            <td>
+                <a th:href="@{'/api/tasks/edit/'+${task.id}}">Edit</a>
+                <a th:href="@{'/api/tasks/delete/'+${task.id}}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <br/><br/>
+    <nav aria-label="Page navigation"  class="navbar navbar-expand-lg navbar-light bg-light">
+        <ul class="pagination">
+            <li class="page-item" th:classappend="${currentPage == 0 ? 'disabled' : ''}">
+                <a class="page-link" th:href="@{/api/tasks/?page=0}">First</a>
+            </li>
+            <li class="page-item" th:classappend="${currentPage == 0 ? 'disabled' : ''}">
+                <a class="page-link" th:href="@{/api/tasks/?page=${currentPage - 1}}">Previous</a>
+            </li>
+            <li class="page-item" th:each="i : ${#numbers.sequence(0, task.totalPages - 1)}"
+                th:classappend="${currentPage == i ? 'active' : ''}">
+                <a class="page-link" th:href="@{/api/tasks/?page=(${i})}" th:text="${i + 1}"></a>
+            </li>
+            <li class="page-item" th:classappend="${currentPage == users.totalPages - 1 ? 'disabled' : ''}">
+                <a class="page-link" th:href="@{/payment/api/users/?page=${currentPage + 1}}">Next</a>
+            </li>
+            <li class="page-item" th:classappend="${currentPage == users.totalPages - 1 ? 'disabled' : ''}">
+                <a class="page-link" th:href="@{/payment/api/users/?page=${users.totalPages - 1}}">Last</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+<br/><br/>
+<div lang="en" th:replace="fragments/footer.html::footer()"></div>
+</body>
+</html>

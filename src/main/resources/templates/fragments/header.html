@@ -1,0 +1,16 @@
+<head th:fragment="header(metaTitle)" xmlns:th="http://www.w3.org/1999/xhtml">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta content="ie=edge" http-equiv="x-ua-compatible"/>
+    <title>Payment System</title>
+    <!-- style.css -->
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+    <!-- Bootstrap JS -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{assets/password-strength-meter/password.min.css}" rel="stylesheet"/>
+    <script th:src="@{assets/password-strength-meter/password.min.js}"></script>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <!-- title -->
+    <title id="metaTitle" th:text="${metaTitle} ? ${metaTitle} : 'TasksCalculator'"></title>
+</head>
