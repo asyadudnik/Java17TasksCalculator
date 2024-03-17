@@ -1,17 +1,22 @@
 package com.tasks.calculator.controllers.error;
 
 
-import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Controller
 @RequestMapping(value = "/payment/api/errors")
 public class IssueController implements org.springframework.boot.web.servlet.error.ErrorController {
+    @Override
+    public String getErrorPath() {
+        return null;
+    }
+
     private static final String PATH = "/";
 
     @GetMapping(value = PATH, consumes = MediaType.APPLICATION_JSON_VALUE)

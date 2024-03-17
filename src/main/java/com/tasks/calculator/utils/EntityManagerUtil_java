@@ -1,0 +1,25 @@
+package com.optum.payment.system.utils;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
+@Slf4j
+public class EntityManagerUtil {
+    private EntityManagerUtil(){}
+    private static EntityManagerFactory entityManagerFactory;
+
+    static {
+        try {
+            entityManagerFactory = Persistence.createEntityManagerFactory("test");
+
+        } catch (Exception ex) {
+            log.info("Initial SessionFactory creation failed." ,ex);
+            throw new ExceptionInInitializerError(ex);
+        }
+    }
+
+    public static EntityManager getEntityManager() {
+        return entityManagerFactory.createEntityManager();
+
+    }
+}

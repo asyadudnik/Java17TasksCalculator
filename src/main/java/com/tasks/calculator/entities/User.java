@@ -4,12 +4,12 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
 import com.tasks.calculator.entities.enums.Gender;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.util.Set;
 
 
@@ -69,7 +69,8 @@ public class User extends Audit {
     private String password;
 
 
-    @Past @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @Past
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @Column(name = "BIRTH_DATE")
     private java.util.Date birthDate;
 

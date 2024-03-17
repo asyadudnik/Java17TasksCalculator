@@ -3,9 +3,10 @@ package com.tasks.calculator.entities;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.tasks.calculator.entities.enums.RoleName;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.*;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @SuppressWarnings("serial")
 @Entity
