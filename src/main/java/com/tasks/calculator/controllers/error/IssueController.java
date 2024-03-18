@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Controller
-@RequestMapping(value = "/payment/api/errors")
+@RequestMapping(value = "/api/tasks/errors")
 public class IssueController implements org.springframework.boot.web.servlet.error.ErrorController {
     @Override
     public String getErrorPath() {

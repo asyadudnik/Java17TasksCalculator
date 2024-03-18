@@ -65,7 +65,6 @@ public class SecurityConfig {
 
     public Properties getHibernateProperties() {
         Properties objHibernateProperties = new Properties();
-
         objHibernateProperties.setProperty("hibernate.hbm2ddl.auto", "update");
         objHibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
         objHibernateProperties.put("hibernate.connection.CharSet", "UTF-8");

@@ -36,5 +36,4 @@ public class Role extends Audit {
     @JoinColumn(name = "USER_ID", referencedColumnName = "id", nullable = false)
     @JsonProperty
     private User user;
-
 }

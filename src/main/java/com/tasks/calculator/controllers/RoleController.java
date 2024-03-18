@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @Slf4j
 @Controller
-@RequestMapping("/payment/api/roles")
+@RequestMapping("/api/api/tasks/roles")
 public class RoleController {
     private final RoleService roleService;
     @Autowired
@@ -36,6 +36,6 @@ public class RoleController {
     @PostMapping(value = "/save")
     public String saveRole(@ModelAttribute("role") Role role) {
         this.roleService.save(role);
-        return "redirect:/api/role/roles";
+        return "redirect:/api/roles/role";
     }
 }

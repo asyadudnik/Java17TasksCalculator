@@ -3,8 +3,9 @@ package com.tasks.calculator.controllers;
 import com.tasks.calculator.entities.User;
 import com.tasks.calculator.repositories.UserRepository;
 import com.tasks.calculator.services.UserService;
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
+import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -20,7 +21,7 @@ import static com.tasks.calculator.utils.JsonUtils.toJson;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @Controller
-@RequestMapping(value = "/payment/api/users")
+@RequestMapping(value = "/api/tasks/users")
 @Validated
 @Slf4j
 public class UserController {
