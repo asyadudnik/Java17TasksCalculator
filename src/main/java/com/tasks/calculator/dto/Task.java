@@ -1,4 +1,4 @@
-package com.tasks.calculator.entities;
+package com.tasks.calculator.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -47,6 +47,4 @@ public class Task {
     @Column(name = "TASK_STATUS", nullable = true, unique = false, insertable = true, updatable = true)
     @JsonProperty
     private String taskStatus;
-
-
 }

@@ -1,4 +1,4 @@
-package com.tasks.calculator.controllers.global;
+package com.tasks.calculator.rest.global;
 
 
 import org.springframework.stereotype.Controller;

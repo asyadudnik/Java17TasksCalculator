@@ -1,4 +1,4 @@
-package com.tasks.calculator.entities.enums;
+package com.tasks.calculator.dto.enums;
 
 public enum TasksStatus {
 

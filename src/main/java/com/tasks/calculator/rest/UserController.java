@@ -1,6 +1,6 @@
-package com.tasks.calculator.controllers;
+package com.tasks.calculator.rest;
 
-import com.tasks.calculator.entities.User;
+import com.tasks.calculator.dto.User;
 import com.tasks.calculator.repositories.UserRepository;
 import com.tasks.calculator.services.UserService;
 import javax.validation.Valid;

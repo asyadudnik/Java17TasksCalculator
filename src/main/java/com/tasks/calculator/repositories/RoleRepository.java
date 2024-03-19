@@ -1,6 +1,6 @@
 package com.tasks.calculator.repositories;
 
-import com.tasks.calculator.entities.Role;
+import com.tasks.calculator.dto.Role;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

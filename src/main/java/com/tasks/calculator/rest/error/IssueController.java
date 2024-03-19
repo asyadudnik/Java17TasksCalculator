@@ -1,4 +1,4 @@
-package com.tasks.calculator.controllers.error;
+package com.tasks.calculator.rest.error;
 
 
 import org.springframework.http.MediaType;

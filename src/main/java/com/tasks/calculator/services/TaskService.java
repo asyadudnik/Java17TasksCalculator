@@ -1,6 +1,6 @@
 package com.tasks.calculator.services;
 
-import com.tasks.calculator.entities.Task;
+import com.tasks.calculator.dto.Task;
 import com.tasks.calculator.repositories.TaskRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

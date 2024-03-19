@@ -1,8 +1,8 @@
-package com.tasks.calculator.entities;
+package com.tasks.calculator.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.tasks.calculator.entities.enums.RoleName;
+import com.tasks.calculator.dto.enums.RoleName;
 import lombok.*;
 
 import javax.persistence.*;
@@ -24,12 +24,14 @@ public class Role extends Audit {
     @Column(name = "ID", nullable = false, unique = true, insertable = false, updatable = false)
     private Long id;
 
+    @JsonProperty
     @NotNull(message = "Please enter role name")
     @Column(name = "ROLE_NAME", nullable = false)
-    private String roleName = RoleName.MANAGER.name();
+    private String roleName;
 
+    @JsonProperty
     @Column(name = "ROLE_DESCRIPTION")
-    private String roleDescription = this.roleName;
+    private String roleDescription;
 
     //ManyToOne=======================================================================================
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)

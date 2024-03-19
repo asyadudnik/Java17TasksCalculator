@@ -1,6 +1,6 @@
 package com.tasks.calculator.services;
 
-import com.tasks.calculator.entities.Role;
+import com.tasks.calculator.dto.Role;
 import com.tasks.calculator.repositories.RoleRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

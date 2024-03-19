@@ -1,9 +1,8 @@
 package com.tasks.calculator.config;
 
 
-import com.tasks.calculator.entities.enums.RoleName;
+import com.tasks.calculator.dto.enums.RoleName;
 import lombok.var;
-import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -12,13 +11,11 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
 import static com.tasks.calculator.global.InstallConstants.PASS;
 import static com.tasks.calculator.global.InstallConstants.USER;
-import static org.springframework.security.authorization.AuthorityReactiveAuthorizationManager.hasRole;
 
 @Configuration
 @EnableWebSecurity

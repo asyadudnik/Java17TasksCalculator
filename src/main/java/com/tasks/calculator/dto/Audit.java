@@ -1,4 +1,4 @@
-package com.tasks.calculator.entities;
+package com.tasks.calculator.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;

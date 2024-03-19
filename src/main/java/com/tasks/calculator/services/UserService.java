@@ -1,6 +1,6 @@
 package com.tasks.calculator.services;
 
-import com.tasks.calculator.entities.User;
+import com.tasks.calculator.dto.User;
 import com.tasks.calculator.repositories.UserRepository;
 import com.tasks.calculator.utils.JsonUtils;
 import lombok.extern.slf4j.Slf4j;
