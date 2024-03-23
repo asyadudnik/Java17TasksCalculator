@@ -43,7 +43,7 @@ lombok 1.18
 JPA
 spring-data-rest-webmvc 4.2.4
 Thymeleaf
-MySQL
+MySQL 8.2
 Spring Security
 Validator
 Jakarta
