@@ -30,7 +30,7 @@ public class TaskController {
     }
 
     @GetMapping("/new")
-    public String showNewtaskPage(Model model) {
+    public String showNewTaskPage(Model model) {
         Task task = new Task();
         model.addAttribute("task", task);
         return "tasks/new_task";
