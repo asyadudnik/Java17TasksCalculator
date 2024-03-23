@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository("operationRepository")
 public interface OperationRepository extends JpaRepository<Operation, Long> {
@@ -18,4 +19,8 @@ public interface OperationRepository extends JpaRepository<Operation, Long> {
     Page<Operation> findAll(Pageable pageable);
 
     List<Operation> findAll(Operation operation);
+
+    Optional<Operation> findByTaskNameAndOperationName(String taskName, String operationName);
+
+    Optional<Operation> findByOperationNumber(Long operationNumber);
 }

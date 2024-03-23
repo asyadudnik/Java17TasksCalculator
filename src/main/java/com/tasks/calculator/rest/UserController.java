@@ -3,9 +3,8 @@ package com.tasks.calculator.rest;
 import com.tasks.calculator.dto.User;
 import com.tasks.calculator.repositories.UserRepository;
 import com.tasks.calculator.services.UserService;
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
-import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -21,7 +20,7 @@ import static com.tasks.calculator.utils.JsonUtils.toJson;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @Controller
-@RequestMapping(value = "/api/tasks/users")
+@RequestMapping(value = "/rest/api/users")
 @Validated
 @Slf4j
 public class UserController {

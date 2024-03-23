@@ -3,7 +3,8 @@ package com.tasks.calculator.dto;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
-import javax.persistence.*;
+
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -41,6 +42,7 @@ public class Operation {
     @Column(name = "OPERATION_STATUS", nullable = true, unique = false, insertable = true, updatable = true)
     @JsonProperty
     private String operationStatus;
+
 
     @Column(name = "TASK_NAME", nullable = true, unique = false, insertable = true, updatable = true)
     @JsonProperty

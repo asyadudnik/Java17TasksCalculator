@@ -3,15 +3,15 @@
       xmlns:th="http://www.thymeleaf.org"
       lang="ru">
 <head lang="en" th:include="fragments/header :: header(metaTitle='Users List')">
-    <!--<title th:id="metaTitle">Users List</title>-->
-        <title th:id="${metaTitle} ? ${metaTitle} : 'Users List'"></title>
+    <title th:id="${metaTitle} ? ${metaTitle} : 'Users List'"></title>
 </head>
 
 <body>
 <div class="container mt-5">
-    <a href="/payment/api/users/new">Create New User</a>
+    <a href="/rest/api/users/new">Create New User</a>
     <br/><br/>
     <table class="table table-striped">
+        <caption>Users List</caption>
         <thead class="table-header">
         <tr>
             <th>UserName</th>
@@ -42,30 +42,30 @@
             <td th:text="${user.systems}">Systems</td>
             <td th:text="${user.roles}">Role</td>
             <td>
-                <a th:href="@{'/payment/api/users/edit/'+${user.id}}">Edit</a>
-                <a th:href="@{'/payment/api/users/delete/'+${user.id}}">Delete</a>
+                <a th:href="@{'/rest/api/users/edit/'+${user.id}}">Edit</a>
+                <a th:href="@{'/rest/api/users/delete/'+${user.id}}">Delete</a>
             </td>
         </tr>
         </tbody>
     </table>
     <br/><br/>
-    <nav aria-label="Page navigation"  class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav aria-label="Page navigation" class="navbar navbar-expand-lg navbar-light bg-light">
         <ul class="pagination">
             <li class="page-item" th:classappend="${currentPage == 0 ? 'disabled' : ''}">
-                <a class="page-link" th:href="@{/payment/api/users/?page=0}">First</a>
+                <a class="page-link" th:href="@{/rest/api/users/?page=0}">First</a>
             </li>
             <li class="page-item" th:classappend="${currentPage == 0 ? 'disabled' : ''}">
-                <a class="page-link" th:href="@{/payment/api/users/?page=${currentPage - 1}}">Previous</a>
+                <a class="page-link" th:href="@{/rest/api/users/?page=${currentPage - 1}}">Previous</a>
             </li>
             <li class="page-item" th:each="i : ${#numbers.sequence(0, users.totalPages - 1)}"
                 th:classappend="${currentPage == i ? 'active' : ''}">
-                <a class="page-link" th:href="@{/payment/api/users/?page=(${i})}" th:text="${i + 1}"></a>
+                <a class="page-link"> th:href="@{/rest/api/users/?page=(${i})}" th:text="${i + 1}" </a>
             </li>
             <li class="page-item" th:classappend="${currentPage == users.totalPages - 1 ? 'disabled' : ''}">
-                <a class="page-link" th:href="@{/payment/api/users/?page=${currentPage + 1}}">Next</a>
+                <a class="page-link" th:href="@{/rest/api/users/?page=${currentPage + 1}}">Next</a>
             </li>
             <li class="page-item" th:classappend="${currentPage == users.totalPages - 1 ? 'disabled' : ''}">
-                <a class="page-link" th:href="@{/payment/api/users/?page=${users.totalPages - 1}}">Last</a>
+                <a class="page-link" th:href="@{/rest/api/users/?page=${users.totalPages - 1}}">Last</a>
             </li>
         </ul>
     </nav>

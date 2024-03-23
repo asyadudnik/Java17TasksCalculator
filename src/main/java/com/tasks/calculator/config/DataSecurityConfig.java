@@ -1,5 +1,7 @@
 package com.tasks.calculator.config;
 
+import jakarta.persistence.EntityManagerFactory;
+import org.apache.commons.dbcp2.BasicDataSource;
 import org.hibernate.dialect.MySQLDialect;
 import org.springframework.boot.autoconfigure.orm.jpa.JpaProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -7,21 +9,23 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import javax.persistence.EntityManagerFactory;
+import javax.sql.DataSource;
 import java.util.Properties;
+
+import static com.tasks.calculator.global.InstallConstants.*;
 
 @Configuration
 @EnableTransactionManagement
 @EnableConfigurationProperties(JpaProperties.class)
-public class SecurityConfig {
+public class DataSecurityConfig {
 
 
-/*
-    @Bean
+    @Bean("dataSource")
     public DataSource dataSource() {
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName(JDBC_DRIVER);
@@ -31,12 +35,11 @@ public class SecurityConfig {
         dataSource.setConnectionProperties("useUnicode=true;characterEncoding=utf8;characterSetResults=UTF-8;");
         return dataSource;
     }
-*/
 
 
-    @Bean
+    @Bean("transactionManager")
     public JpaTransactionManager transactionManager(EntityManagerFactory emf) {
-        return new JpaTransactionManager(emf);
+        return new JpaTransactionManager(emf);//entityManagerFactory()
     }
 
 
@@ -51,18 +54,15 @@ public class SecurityConfig {
         return jpaVendorAdapter;
     }
 
-/*
     @Bean("entityManagerFactory")
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean objEntityManager = new LocalContainerEntityManagerFactoryBean();
-        //objEntityManager.setDataSource(dataSource());
+        objEntityManager.setDataSource(dataSource());
         objEntityManager.setJpaVendorAdapter(jpaVendorAdapter());
         objEntityManager.setPackagesToScan("com.tasks.calculator.entities");
         objEntityManager.setJpaProperties(getHibernateProperties());
         return (objEntityManager);
     }
-*/
-
     public Properties getHibernateProperties() {
         Properties objHibernateProperties = new Properties();
         objHibernateProperties.setProperty("hibernate.hbm2ddl.auto", "update");

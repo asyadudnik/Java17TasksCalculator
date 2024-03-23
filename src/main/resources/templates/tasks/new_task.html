@@ -3,35 +3,36 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 
-<head lang="en" th:include="fragments/header :: header(metaTitle='Create New User')">
-    <title th:text="${metaTitle}"></title>
+<head lang="en" th:include="fragments/header :: header(metaTitle='Create New Task')">
+    <title th:id="metaTitle">Create New Task</title>
 </head>
 <body>
-<div id="creatingUser">
-    <form action="#" th:action="@{'/rest/api/users/save'}" th:object="${user}" method="post">
-        <table class="table table-striped">
-            <caption>User creation</caption>
+<div class="container mt-5">
+    <form action="#" th:action="@{'/rest/api/tasks/save'}" th:object="${task}" method="post">
+        <table class="align-content-center">
+            <caption> New Task creation</caption>
             <tr>
                 <td>
-                    <label th:text="${userName}" th:field="${user.userName}"/>
+                    <label th:text="${task.number}" th:field="${task.number}"></label>
                 </td>
                 <td>
-                    <input type="text" th:field="*{userName}"/>
-                </td>
-                <td>
-                    <p th:if="${#fields.hasErrors('userName')}" th:errorclass="error" th:errors="*{userName}"></p>
+                    <input type="text" th:field="*{number}" disabled="true"/>
                 </td>
             </tr>
+
+
+
+
             <tr>
                 <td>
-                    <label th:text="${'Password'}" th:field="${user.password}"/>
+                    <label th:text="${'Password'}" th:field="${user.password}"></label>
                 </td>
                 <td>
                     <div class="input-group" id="show_hide_password">
-
-                        <input type="password" class="form-control" id="password" autocomplete="off"
-                               th:field="*{password}"/>
-
+                        <label for="password">
+                            <input type="password" class="form-control" id="password" autocomplete="off"
+                                   th:field="*{password}"/>
+                        </label>
                         <div class="input-group-append">
                             <span class="input-group-text"><i class="fa fa-eye-slash" aria-hidden="true"></i></span>
                         </div>
@@ -43,49 +44,49 @@
             </tr>
             <tr>
                 <td>
-                    <label th:text="${'firstName'}" th:field="${user.firstName}"/>
+                    <label th:text="${'FirstName'}" th:field="${user.firstName}"></label>
                 </td>
-                <td><input type="text" th:field="${firstName}"></td>
+                <td><input type="text" th:field="${user.firstName}"></td>
                 <td>
                     <p th:if="${#fields.hasErrors('firstName')}" th:errorclass="error" th:errors="*{firstName}"></p>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <label th:text="${'lastName'}" th:field="${user.lastName}"/>
+                    <label th:text="${'LastName'}" th:field="${user.lastName}"></label>
                 </td>
-                <td><input type="text" th:field="${lastName}"></td>
+                <td><input type="text" th:field="${user.lastName}"></td>
                 <td>
                     <p th:if="${#fields.hasErrors('lastName')}" th:errorclass="error" th:errors="*{lastName}"></p>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <label th:text="${'fullName'}" th:field="${user.fullName}"/>
+                    <label th:text="${'FullName'}" th:field="${user.fullName}"></label>
                 </td>
-                <td>
-                    <input type="text" th:field="${fullName}">
-                </td>
+                <td><label>
+                    <input type="text" th:field="${user.fullName}">
+                </label></td>
                 <td>
                     <p th:if="${#fields.hasErrors('fullName')}" th:errorclass="error" th:errors="*{fullName}"></p>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <label th:text="${'email'}" th:field="${user.email}"/>
+                    <label th:text="${'Email'}" th:field="${user.email}"></label>
                 </td>
-                <td><input type="text" th:field="${email}"></td>
+                <td><input type="text" th:field="${user.email}"></td>
                 <td>
                     <p th:if="${#fields.hasErrors('email')}" th:errorclass="error" th:errors="*{email}"></p>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <label th:text="${'gender'}" th:field="${user.gender}"/>
+                    <label th:text="${'Gender'}" th:field="${user.gender}"></label>
                 </td>
                 <td>
                     <select name="Gender" th:field="${user.gender}">
-                        <option th:each="gender : ${T(com.tasks.calculator.dto.enums.Gender).values()}"
+                        <option th:each="gender : ${T(com.optum.payment.system.entities.enums.Gender).values()}"
                                 th:value="${gender}"
                                 th:text="${gender.name}"/>
                     </select>
@@ -96,7 +97,7 @@
             </tr>
             <tr>
                 <td>
-                    <label th:text="${phoneNumber}" th:field="${user.phoneNumber}"/>
+                    <label th:text="${'PhoneNumber'}" th:field="${user.phoneNumber}"></label>
                 </td>
                 <td><input type="text" th:field="${user.phoneNumber}"></td>
                 <td>
@@ -105,26 +106,27 @@
             </tr>
             <tr>
                 <td>
-                    <label th:text="${picture}" th:field="${user.picture}"/>
+                    <label th:text="${'Picture'}" th:field="${user.picture}"></label>
                 </td>
-                <td><input type="text" th:field="${picture}"></td>
+                <td><input type="text" th:field="${user.picture}"></td>
                 <td>
                     <p th:if="${#fields.hasErrors('picture')}" th:errorclass="error" th:errors="*{picture}"></p>
                 </td>
             </tr>
             <tr th:each="${user.systems}">
                 <td>
-                    <label th:text="${systems}" th:field="${user.systems}"/>
+                    <label th:text="${'Systems'}" th:field="${user.systems}"></label>
                 </td>
                 <td>
                     <div th:with="condition=${user.systems.size()!=0}">
-                        <div th:each="system : ${user.systems}">
-                            <select name="System" th:field="${system}">
-                                <option th:each="syst : ${T(com.tasks.calculator.dto.enums.SystemName).values()}"
-                                        th:value="${syst}"
-                                        th:text="${syst.name}"/>
-                            </select>
-                        </div>
+                    <div th:each="system : ${user.systems}">
+                    <select name="System" th:field="${system}">
+                        <option th:each="syst : ${T(com.optum.payment.system.entities.enums.SystemName).values()}"
+                                th:value="${syst}"
+                                th:text="${syst.name}"/>
+                        </option>
+                    </select>
+                    </div>
                     </div>
 
 
@@ -135,16 +137,16 @@
             </tr>
             <tr>
                 <td>
-                    <label th:text="${roles}" th:field="${user.roles}"/>
+                    <label th:text="${'Roles'}" th:field="${user.roles}"></label>
                 </td>
                 <td>
                     <label>
                         <div th:each="role : ${user.roles}">
-                            <select name="Role" th:field="${user.roles}">
-                                <option th:each="rol : ${T(com.tasks.calculator.dto.enums.RoleName).values()}"
-                                        th:value="${rol}"
-                                        th:text="${rol.name}"/>
-                            </select>
+                        <select name="Role" th:field="${user.roles}">
+                            <option th:each="rol : ${T(com.optum.payment.system.entities.enums.RoleName).values()}"
+                                    th:value="${rol}"
+                                    th:text="${rol.name}"/>
+                        </select>
                         </div>
                     </label>
                 </td>
@@ -154,18 +156,18 @@
             </tr>
             <tr>
                 <td>
-                    <label th:text="${notes}" th:field="${user.notes}"/>
+                    <label th:text="${'Notes'}" th:field="${user.notes}"></label>
                 </td>
-                <td>
-                    <input type="text" th:field="${notes}">
-                </td>
+                <td><label>
+                    <input type="text" th:field="${user.notes}">
+                </label></td>
                 <td>
                     <p th:if="${#fields.hasErrors('notes')}" th:errorclass="error" th:errors="*{notes}"></p>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <label th:text="${birthDate}" th:field="${user.birthDate}"/>
+                    <label th:text="${'birthDay'}" th:field="${user.birthDate}"></label>
                 </td>
                 <td>
                     <label>
@@ -187,7 +189,7 @@
 </div>
 
 <br/><br/>
-<div lang="en" th:insert="fragments/footer.html::footer()"></div>
+<div lang="en" th:replace="fragments/footer.html::footer()"></div>
 
 </body>
 </html>

@@ -1,0 +1,51 @@
+package com.tasks.calculator.config;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+
+@Configuration
+@Order(100)
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+    protected static final String[] CLASSPATH_RESOURCE_LOCATIONS = {
+            "classpath:/META-INF/resources/",
+            "classpath:/resources/",
+            "classpath:/static/",
+            "classpath:/static/css",
+            "classpath:/static/js",
+            "classpath:/public/"};
+
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring()
+        .antMatchers("/rest/api/tasks/**")
+        .antMatchers("/rest/api/operations/**")
+        ;
+    }
+
+    @Override
+    public void configure(HttpSecurity http) throws Exception {
+        http.csrf()
+                .disable()
+                .authorizeRequests()
+                .antMatchers("/rest/api/tasks/**")
+                .antMatchers("/rest/api/operations/**")
+                .permitAll();
+    }
+
+    public void addResourceHandlers(ResourceHandlerRegistry registry)
+    {
+    ResourceHandlerRegistration resourceRegistration = registry
+                .addResourceHandler("resources/**");
+        resourceRegistration
+                .addResourceHandler("/**")
+                .addResourceLocations(CLASSPATH_RESOURCE_LOCATIONS);
+        resourceRegistration
+                .addResourceHandler("/webjars/**")
+                .addResourceLocations("classpath:/META-INF/resources/webjars/");
+    }
+
+}

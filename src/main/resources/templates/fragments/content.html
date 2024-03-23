@@ -1,10 +1,10 @@
-<div th:fragment="content(message)">
+<div th:fragment="content(message)" xmlns:th="http://www.w3.org/1999/xhtml">
     <p th:text="${message} ? ${message} : ''"></p>
     <div th:insert>
         <div class="container">
 
-        <div th:include="fragments/errorMessage :: errorMessage(errMsg)">
-            <h1 th:id="errMsg" th:object="${errMsg}"></h1>
+        <div th:insert="fragments/errorMessage :: errorMessage(errMsg)">
+            <title th:text="${errMsg}"></title>
         </div>
 
         <br/><br/>

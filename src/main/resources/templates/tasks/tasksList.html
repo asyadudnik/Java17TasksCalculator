@@ -8,25 +8,32 @@
 
 <body>
 <div class="container mt-5">
-    <a href="/api/tasks/new">Create New Task</a>
+    <a href="/rest/api/tasks/new">Create New Task</a>
     <br/><br/>
     <table class="table table-striped">
+        <caption>Tasks List</caption>
         <thead class="table-header">
         <tr>
-            <th>TaskNumber</th>
-            <th>TaskName</th>
-            <th>TaskDescription</th>
+            <th>Task Number</th>
+            <th>Task Name</th>
+            <th>Task Description</th>
+            <th>Task Cost</th>
+            <th>Operations Count</th>
+            <th>Status</th>
             <th>Actions</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="task : ${tasks}">
-            <td th:text="${task.getNumber}">TaskNumber</td>
-            <td th:text="${task.getName}">TaskName</td>
-            <td th:text="${task.getDescription}">TaskDescription</td>
+            <td th:text="${task.getNumber}">Task Number</td>
+            <td th:text="${task.getName}">Task Name</td>
+            <td th:text="${task.getDescription}">Task Description</td>
+            <td th:text="${task.getTaskCost}">Task Cost</td>
+            <td th:text="${task.getOperationsCount}">Task Operations Count</td>
+            <td th:text="${task.getStatus}">Task Status</td>
             <td>
-                <a th:href="@{'/api/tasks/edit/'+${task.id}}">Edit</a>
-                <a th:href="@{'/api/tasks/delete/'+${task.id}}">Delete</a>
+                <a th:href="@{'/rest/api/tasks/edit/'+${task.id}}">Edit</a>
+                <a th:href="@{'/rest/api/tasks/delete/'+${task.id}}">Delete</a>
             </td>
         </tr>
         </tbody>
@@ -35,20 +42,20 @@
     <nav aria-label="Page navigation"  class="navbar navbar-expand-lg navbar-light bg-light">
         <ul class="pagination">
             <li class="page-item" th:classappend="${currentPage == 0 ? 'disabled' : ''}">
-                <a class="page-link" th:href="@{/api/tasks/?page=0}">First</a>
+                <a class="page-link" th:href="@{/rest/api/tasks/?page=0}">First</a>
             </li>
             <li class="page-item" th:classappend="${currentPage == 0 ? 'disabled' : ''}">
-                <a class="page-link" th:href="@{/api/tasks/?page=${currentPage - 1}}">Previous</a>
+                <a class="page-link" th:href="@{/rest/api/tasks/?page=${currentPage - 1}}">Previous</a>
             </li>
-            <li class="page-item" th:each="i : ${#numbers.sequence(0, task.totalPages - 1)}"
+            <li class="page-item" th:each="i : ${#numbers.sequence(0, tasks.totalPages - 1)}"
                 th:classappend="${currentPage == i ? 'active' : ''}">
-                <a class="page-link" th:href="@{/api/tasks/?page=(${i})}" th:text="${i + 1}"></a>
+                <a class="page-link"> th:href="@{/rest/api/tasks/?page=(${i})}" th:text="${i + 1}"</a>
             </li>
-            <li class="page-item" th:classappend="${currentPage == users.totalPages - 1 ? 'disabled' : ''}">
-                <a class="page-link" th:href="@{/payment/api/users/?page=${currentPage + 1}}">Next</a>
+            <li class="page-item" th:classappend="${currentPage == tasks.totalPages - 1 ? 'disabled' : ''}">
+                <a class="page-link" th:href="@{/rest/api/users/?page=${currentPage + 1}}">Next</a>
             </li>
-            <li class="page-item" th:classappend="${currentPage == users.totalPages - 1 ? 'disabled' : ''}">
-                <a class="page-link" th:href="@{/payment/api/users/?page=${users.totalPages - 1}}">Last</a>
+            <li class="page-item" th:classappend="${currentPage == tasks.totalPages - 1 ? 'disabled' : ''}">
+                <a class="page-link" th:href="@{/rest/api/users/?page=${tasks.totalPages - 1}}">Last</a>
             </li>
         </ul>
     </nav>

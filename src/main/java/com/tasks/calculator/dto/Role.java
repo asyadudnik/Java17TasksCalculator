@@ -3,10 +3,10 @@ package com.tasks.calculator.dto;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.tasks.calculator.dto.enums.RoleName;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 @SuppressWarnings("serial")
 @Entity

@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorator="layouts/default">
-<head lang="en" th:replace="fragments/header :: header(metatitle='Calculator Tasks')">
+      layout:decorate="layouts/default"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head lang="en" th:insert="fragments/header :: header(metaTitle='Calculator Tasks')">
     <!--/*@thymesVar id="metaTitle" type=""*/-->
-    <title th:text="${metaTitle}" ></title>
+    <title th:text="${metaTitle}"></title>
 </head>
 <body class="container">
-<div id="page" layout:fragment="content">
-    <div>Calculator Tasks</div>
-    <div align="center">
-        <ul>
-            <li th:each="item : ${items}" th:text="${item.text}"></li>
-        </ul>
-    </div>
+<section layout:fragment="content">
+    <div id="page">
+        <div>Calculator Tasks</div>
+        <div>
+            <ul>
+                <li th:each="item : ${items}" th:text="${item.text}"></li>
+            </ul>
+        </div>
 
-</div>
-<div lang="en" th:replace="fragments/footer :: footer"> </div>
+    </div>
+</section>
+<div lang="en" th:insert="fragments/footer :: footer"></div>
 </body>
 </html>

@@ -1,35 +1,36 @@
 package com.tasks.calculator;
 
+import com.tasks.calculator.dto.Task;
 import com.tasks.calculator.dto.User;
 import com.tasks.calculator.services.UserService;
 import lombok.extern.slf4j.Slf4j;
-import lombok.var;
+import lombok.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
-import org.thymeleaf.spring5.SpringTemplateEngine;
-import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
+import org.thymeleaf.spring6.SpringTemplateEngine;
+import org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver;
 
 import static com.tasks.calculator.global.InstallConstants.PASS;
 import static com.tasks.calculator.global.InstallConstants.USER;
 
 @Slf4j
 @SpringBootApplication
-public class TasksCalculatorApplication implements CommandLineRunner {
+public class Java17TasksCalculatorApplication implements CommandLineRunner {
 
 	private final ApplicationContext applicationContext;
 	private final UserService userService;
 
-    public TasksCalculatorApplication(ApplicationContext applicationContext, UserService userService) {
+    public Java17TasksCalculatorApplication(ApplicationContext applicationContext, UserService userService) {
         this.applicationContext = applicationContext;
         this.userService = userService;
     }
 
 
     public static void main(String[] args) {
-		SpringApplication.run(TasksCalculatorApplication.class, args);
+		SpringApplication.run(Java17TasksCalculatorApplication.class, args);
 	}
 
 	@Bean
@@ -63,5 +64,14 @@ public class TasksCalculatorApplication implements CommandLineRunner {
 		if (newUser != null) {
 			log.info("springUser saved...");
 		}
+
+/*
+		final Task taskTest = Task
+				.builder()
+                .
+				.build();
+				log.info("Test task object created!");
+*/
+
 	}
 }

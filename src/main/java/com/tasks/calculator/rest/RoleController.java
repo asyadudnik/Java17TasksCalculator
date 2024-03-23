@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @Slf4j
 @Controller
-@RequestMapping("/api/api/tasks/roles")
+@RequestMapping("/rest/api/roles")
 public class RoleController {
     private final RoleService roleService;
     @Autowired

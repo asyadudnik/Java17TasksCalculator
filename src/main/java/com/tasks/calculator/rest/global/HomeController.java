@@ -10,7 +10,7 @@ import java.util.Locale;
 import java.util.Map;
 
 @Controller
-@RequestMapping(value={"/api/tasks/"})
+@RequestMapping(value={"/rest/api/tasks/"})
 public class HomeController {
     @RequestMapping(value={"/home"})
     public String root(Locale locale, ModelMap model) {
@@ -19,7 +19,7 @@ public class HomeController {
         items.put("1.","Tasks list with status.");
         items.put("2.","Creation of task.");
         items.put("3.","Operation list with status.");
-        items.put("4.","Creation operation.");
+        items.put("4.","Creation of operation.");
         items.put("5.","Calculate tasks cost.");
         items.put("6.","Report.");
         model.addAttribute("items", items);
