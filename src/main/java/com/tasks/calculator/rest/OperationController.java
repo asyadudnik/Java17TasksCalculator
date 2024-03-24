@@ -27,14 +27,14 @@ public class OperationController {
     public String listAll(Model model) {
         List<Operation> operationList = this.operationService.listAll();
         model.addAttribute("listOperations", operationList);
-        return "operations/operationList";
+        return "/operations/operationList";
     }
 
     @GetMapping("/new")
     public String showNewOperationPage(Model model) {
         Operation operation = new Operation();
         model.addAttribute("operation", operation);
-        return "operations/new_operation";
+        return "/operations/new_operation";
     }
 
     @PostMapping(value = "/save")
