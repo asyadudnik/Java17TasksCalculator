@@ -23,19 +23,19 @@ public class RoleController {
     public String listAll(Model model) {
         List<Role> roleList = this.roleService.listAll();
         model.addAttribute("listRoles", roleList);
-        return "role/roles";
+        return "/roles/rolesList";
     }
 
     @GetMapping("/new")
     public String showNewRolePage(Model model) {
         Role role = new Role();
         model.addAttribute("role", role);
-        return "role/new_role";
+        return "/roles/new_role";
     }
 
     @PostMapping(value = "/save")
     public String saveRole(@ModelAttribute("role") Role role) {
         this.roleService.save(role);
-        return "redirect:/api/roles/role";
+        return "redirect:/rest/api/roles/rolesList";
     }
 }

@@ -3,12 +3,12 @@
       xmlns:th="http://www.thymeleaf.org"
       lang="ru">
 <head lang="en" th:include="fragments/header :: header(metaTitle='Operations List')">
-    <title th:id="${metaTitle} ? ${metaTitle} : ''Operations List'"></title>
+    <title th:id="${metaTitle} ? ${metaTitle} : 'Operations List'></title>
 </head>
 
 <body>
 <div class="container mt-5">
-    <a href="/rest/api/tasks/operations/new">Create New 'Operation</a>
+    <a href="/rest/api/tasks/operations/new">Create New Operation</a>
     <br/><br/>
     <table class="table table-striped">
         <caption>Operations List</caption>

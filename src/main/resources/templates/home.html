@@ -12,9 +12,21 @@
     <div id="page">
         <div>Calculator Tasks</div>
         <div>
-            <ul>
-                <li th:each="item : ${items}" th:text="${item.text}"></li>
-            </ul>
+            <table>
+                <thead>
+                <tr>
+                    <th> Item Number </th>
+                    <th> Item Text</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="item : ${items}">
+                    <ul>
+                        <li th:each="item : ${items}" th:text="${item.key} ${item.value}"></li>
+                    </ul>
+                </tr>
+                </tbody>
+            </table>
         </div>
 
     </div>

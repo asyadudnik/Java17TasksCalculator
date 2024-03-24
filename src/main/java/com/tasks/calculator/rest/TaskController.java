@@ -26,7 +26,7 @@ public class TaskController {
     public String listAll(Model model) {
         List<Task> taskList = this.taskService.findAll();
         model.addAttribute("listTasks", taskList);
-        return "task/tasks";
+        return "tasks/tasksList";
     }
 
     @GetMapping("/new")
@@ -39,6 +39,6 @@ public class TaskController {
     @PostMapping(value = "/save")
     public String saveTask(@ModelAttribute("task") Task task) {
         this.taskService.save(task);
-        return "redirect:/rest/api/tasks/task";
+        return "redirect:/rest/api/tasks/tasksList";
     }
 }

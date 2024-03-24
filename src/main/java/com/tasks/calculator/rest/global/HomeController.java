@@ -10,7 +10,7 @@ import java.util.Locale;
 import java.util.Map;
 
 @Controller
-@RequestMapping(value={"/rest/api/tasks/"})
+@RequestMapping(value={"/rest/api/tasks"})
 public class HomeController {
     @RequestMapping(value={"/home"})
     public String root(Locale locale, ModelMap model) {
