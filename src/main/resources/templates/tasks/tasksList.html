@@ -25,12 +25,12 @@
         </thead>
         <tbody>
         <tr th:each="task : ${tasks}">
-            <td th:text="${task.getNumber}">Task Number</td>
-            <td th:text="${task.getName}">Task Name</td>
-            <td th:text="${task.getDescription}">Task Description</td>
-            <td th:text="${task.getTaskCost}">Task Cost</td>
-            <td th:text="${task.getOperationsCount}">Task Operations Count</td>
-            <td th:text="${task.getStatus}">Task Status</td>
+            <td th:text="${task.taskNumber}">Task Number</td>
+            <td th:text="${task.taskName}">Task Name</td>
+            <td th:text="${task.taskDescription}">Task Description</td>
+            <td th:text="${task.taskCost}">Task Cost</td>
+            <td th:text="${task.operationsCount}">Task Operations Count</td>
+            <td th:text="${task.taskStatus}">Task Status</td>
             <td>
                 <a th:href="@{'/rest/api/tasks/edit/'+${task.id}}">Edit</a>
                 <a th:href="@{'/rest/api/tasks/delete/'+${task.id}}">Delete</a>

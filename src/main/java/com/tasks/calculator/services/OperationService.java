@@ -7,9 +7,12 @@ import com.tasks.calculator.utils.JsonUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Slf4j
@@ -64,6 +67,15 @@ public class OperationService {
         }
 
     }
+    @Transactional(value = "transactionManager", propagation = Propagation.REQUIRES_NEW, rollbackFor = {Throwable.class})
+    public void delete(long id) {
+        if (!existsById(id)) {
+            throw new NoSuchElementException();
+        } else {
+            this.repo.deleteById(id);
+        }
+    }
+
 
 
 }

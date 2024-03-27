@@ -7,12 +7,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+
 @Slf4j
 @Controller
 @RequestMapping("/rest/api/tasks/operations")
@@ -23,23 +23,29 @@ public class OperationController {
         this.operationService = operationService;
     }
 
-    @GetMapping("/")
+    @GetMapping(value="/", produces = {APPLICATION_JSON_VALUE})
     public String listAll(Model model) {
         List<Operation> operationList = this.operationService.listAll();
         model.addAttribute("listOperations", operationList);
         return "/operations/operationList";
     }
 
-    @GetMapping("/new")
+    @GetMapping(value="/new", produces = {APPLICATION_JSON_VALUE})
     public String showNewOperationPage(Model model) {
         Operation operation = new Operation();
         model.addAttribute("operation", operation);
         return "/operations/new_operation";
     }
 
-    @PostMapping(value = "/save")
+    @PostMapping(value = "/save", produces = {APPLICATION_JSON_VALUE})
     public String saveOperation(@ModelAttribute("task") Task task, @ModelAttribute("operation") Operation operation) {
         this.operationService.save(task, operation);
-        return "redirect:/rest/api/task/operations/operationList";
+        return "/operations/edit_operation";
     }
+    @DeleteMapping(value = "/delete/{id}", consumes = {APPLICATION_JSON_VALUE}, produces = {APPLICATION_JSON_VALUE})
+    public String deleteTask(@PathVariable(name = "id") Long id) {
+        this.operationService.delete(id);
+        return "redirect:/operations/operationsList";
+    }
+
 }

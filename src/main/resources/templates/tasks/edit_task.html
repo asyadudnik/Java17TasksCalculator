@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
-
-<head lang="en" th:include="fragments/header :: header(metaTitle='Create New Task')">
-    <title th:id="metaTitle">Create New Task</title>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="ru">
+<head lang="en" th:include="fragments/header :: header(metaTitle='Edit Task')">
+    <title th:id="metaTitle">Edit Task</title>
 </head>
 <body>
-<div class="container mt-5">
-    <form action="#" th:action="@{'/rest/api/tasks/save'}" th:object="${task}" method="post">
-        <table class="align-content-center">
-            <caption> New Task creation</caption>
+<div>
+    <h1>Edit Task</h1>
+    <br/>
+    <form action="#" th:action="@{/rest/api/tasks/save}" th:object="${task}" method="post">
+
+        <table>
             <tr>
                 <td>
                     <label th:text="${'TaskNumber'}" th:field="${task.taskNumber}"></label>
@@ -98,9 +99,7 @@
         </table>
     </form>
 </div>
-
 <br/><br/>
 <div lang="en" th:replace="fragments/footer.html::footer()"></div>
-
 </body>
 </html>

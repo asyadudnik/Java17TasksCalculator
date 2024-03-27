@@ -7,7 +7,9 @@
     <!--/*@thymesVar id="metaTitle" type=""*/-->
     <title th:text="${metaTitle}"></title>
 </head>
+
 <body class="container">
+
 <section layout:fragment="content">
     <div id="page">
         <div>Calculator Tasks</div>
@@ -20,6 +22,7 @@
                 </tr>
                 </thead>
                 <tbody>
+
                 <tr th:each="item : ${items}">
                     <ul>
                         <li th:each="item : ${items}" th:text="${item.key} ${item.value}"></li>
@@ -28,7 +31,6 @@
                 </tbody>
             </table>
         </div>
-
     </div>
 </section>
 <div lang="en" th:insert="fragments/footer :: footer"></div>
