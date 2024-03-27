@@ -67,6 +67,9 @@ public class OperationService {
         }
 
     }
+    private boolean existsById(Long id) {
+        return this.repo.existsById(id);
+    }
     @Transactional(value = "transactionManager", propagation = Propagation.REQUIRES_NEW, rollbackFor = {Throwable.class})
     public void delete(long id) {
         if (!existsById(id)) {

@@ -104,12 +104,12 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 bootJar {
-    archiveBaseName = 'Java17TaskCalculator'
+    archiveBaseName = 'Java17TaskCalculatorApplication'
     version = '0.0.1-SNAPSHOT'
 }
 
 bootRun {
-    main = 'com.tasks.calculator.Java17TaskCalculator'
+    main = 'com.tasks.calculator.Java17TaskCalculatorApplication'
 //    args = ['--spring.profiles.active=local']
     jvmArgs = ['-Dhttps.proxyPort=8080']
 }
