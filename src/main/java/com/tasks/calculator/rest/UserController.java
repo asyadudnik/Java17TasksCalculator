@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
+import static com.tasks.calculator.rest.global.HomeController.*;
 import static com.tasks.calculator.utils.JsonUtils.toJson;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
@@ -24,12 +25,10 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @Validated
 @Slf4j
 public class UserController {
-    public static final String ERR_MSG = "errMsg";
-    public static final String ERR_PAGE = "/errors/error";
     public static final String USERS_PAGE = "/users/usersList";
     public static final String EDIT_PAGE = "/users/edit_user";
     public static final String NEW_PAGE = "/users/new_user";
-    public static final String REDIRECT = "redirect:";
+
 
     private final UserRepository userRepository;
     private final UserService userService;

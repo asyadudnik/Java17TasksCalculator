@@ -13,22 +13,10 @@
             <caption> New Operation creation</caption>
             <tr>
                 <td>
-                    <label th:text="Operation number" th:field="${operation.number}"></label>
+                    <label th:text="Operation number" th:field="${operation.number}" ></label>
                 </td>
                 <td>
-                    <input type="text" th:field="${operation.number}" disabled="true"/>
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    <label th:text="Operation description" th:field="${operation.operationDescription}"></label>
-                </td>
-                <td>
-                    <input type="text" th:field="${operation.operationDescription}" disabled="false"/>
-                </td>
-                <td>
-                    <p th:if="${#fields.hasErrors('operationDescription')}" th:errorclass="error" th:errors="*{operationDescription}"></p>
+                    <input type="text" th:field="${operation.number}" th:disabled="true"/>
                 </td>
             </tr>
             <tr>
@@ -39,6 +27,18 @@
                     <input type="text" th:field="${operation.operationName}"></td>
                 <td>
                     <p th:if="${#fields.hasErrors('operationName')}" th:errorclass="error" th:errors="*{operationName}"></p>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label th:text="Operation description" th:field="${operation.operationDescription}"></label>
+                </td>
+                <td>
+                    <input type="text" th:field="${operation.operationDescription}" th:disabled="false"/>
+                </td>
+                <td>
+                    <p th:if="${#fields.hasErrors('operationDescription')}" th:errorclass="error" th:errors="*{operationDescription}"></p>
                 </td>
             </tr>
             <tr>

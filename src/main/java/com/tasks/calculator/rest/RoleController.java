@@ -36,6 +36,6 @@ public class RoleController {
     @PostMapping(value = "/save")
     public String saveRole(@ModelAttribute("role") Role role) {
         this.roleService.save(role);
-        return "redirect:/rest/api/roles/rolesList";
+        return "redirect:/roles/rolesList";
     }
 }

@@ -17,7 +17,7 @@
                     <label th:text="${'TaskNumber'}" th:field="${task.taskNumber}"></label>
                 </td>
                 <td>
-                    <input type="text" th:field="${task.taskNumber}" disabled/>
+                    <input type="number" th:field="${task.taskNumber}" th:disabled="true"/>
                 </td>
                 <td>
                     <p th:if="${#fields.hasErrors('taskNumber')}" th:errorclass="error" th:errors="*{taskNumber}"></p>
@@ -55,15 +55,6 @@
                 <td><input type="text" th:field="${task.taskCost}"></td>
                 <td>
                     <p th:if="${#fields.hasErrors('taskCost')}" th:errorclass="error" th:errors="*{taskCost}"></p>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label th:text="${'FullName'}" th:field="${task.fullName}"></label>
-                </td>
-                <td><input type="number" th:field="${task.fullName}"></td>
-                <td>
-                    <p th:if="${#fields.hasErrors('fullName')}" th:errorclass="error" th:errors="*{fullName}"></p>
                 </td>
             </tr>
             <tr>

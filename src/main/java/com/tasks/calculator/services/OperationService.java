@@ -18,20 +18,21 @@ import java.util.Optional;
 @Slf4j
 @Service
 public class OperationService {
-    private final OperationRepository repo;
+    private final OperationRepository operationRepository;
 
     @Autowired
-    public OperationService(OperationRepository repo) {
-        this.repo = repo;
+    public OperationService(OperationRepository operationRepository) {
+        this.operationRepository = operationRepository;
     }
 
     public List<Operation> listAll() {
         List<Operation> operations = new ArrayList<>();
-         this.repo
+         this.operationRepository
                 .findAll()
                 .forEach(operations::add);
         return operations;
     }
+
     public Operation save (Task task, Operation operation)
     {
         if (operation != null) {
@@ -42,7 +43,7 @@ public class OperationService {
             log.error("Operation not filled.");
             return null;
         }
-        Optional<Operation> operationOptional = this.repo.findByTaskNameAndOperationName(
+        Optional<Operation> operationOptional = this.operationRepository.findByTaskNameAndOperationName(
                 task.getTaskName(), operation.getOperationName()    );
         if (operationOptional.isPresent()) {
             log.info("Saving of operation = {}", operationOptional);
@@ -60,22 +61,22 @@ public class OperationService {
                         .operationStatus(operation.getOperationStatus())
                         .operationPrice(realOperation.getOperationPrice())
                         .build();
-                return this.repo.save(updated);
+                return this.operationRepository.save(updated);
             }
         } else {
-            return this.repo.save(operation);
+            return this.operationRepository.save(operation);
         }
 
     }
     private boolean existsById(Long id) {
-        return this.repo.existsById(id);
+        return this.operationRepository.existsById(id);
     }
     @Transactional(value = "transactionManager", propagation = Propagation.REQUIRES_NEW, rollbackFor = {Throwable.class})
     public void delete(long id) {
         if (!existsById(id)) {
             throw new NoSuchElementException();
         } else {
-            this.repo.deleteById(id);
+            this.operationRepository.deleteById(id);
         }
     }
 

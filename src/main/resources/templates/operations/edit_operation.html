@@ -19,6 +19,16 @@
                     <input type="text" th:field="${operation.number}" disabled="true"/>
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <label th:text="${'OperationName'}" th:field="${operation.operationName}"></label>
+                </td>
+                <td>
+                    <input type="text" th:field="${operation.operationName}"></td>
+                <td>
+                    <p th:if="${#fields.hasErrors('operationName')}" th:errorclass="error" th:errors="*{operationName}"></p>
+                </td>
+            </tr>
 
             <tr>
                 <td>
@@ -33,19 +43,9 @@
             </tr>
             <tr>
                 <td>
-                    <label th:text="${'OperationName'}" th:field="${operation.operationName}"></label>
-                </td>
-                <td>
-                    <input type="text" th:field="${operation.operationName}"></td>
-                <td>
-                    <p th:if="${#fields.hasErrors('operationName')}" th:errorclass="error" th:errors="*{operationName}"></p>
-                </td>
-            </tr>
-            <tr>
-                <td>
                     <label th:text="Operation Price" th:field="${operation.operationPrice}"></label>
                 </td>
-                <td><input type="text" th:field="${operationPrice}"></td>
+                <td><input type="number" th:field="${operationPrice}"></td>
                 <td>
                     <p th:if="${#fields.hasErrors('operationPrice')}" th:errorclass="error" th:errors="*{operationPrice}"></p>
                 </td>

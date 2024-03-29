@@ -1,10 +1,8 @@
 package com.tasks.calculator;
 
-import com.tasks.calculator.dto.Task;
 import com.tasks.calculator.dto.User;
 import com.tasks.calculator.services.UserService;
 import lombok.extern.slf4j.Slf4j;
-import lombok.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
