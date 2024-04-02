@@ -10,14 +10,14 @@ import java.util.Locale;
 import java.util.Map;
 
 @Controller
-@RequestMapping(value = {"/rest/api/tasks"})
+@RequestMapping(value = {"/rest/api/home"})
 public class HomeController {
     public static final String ERR_MSG = "errMsg";
     public static final String ERR_PAGE = "/errors/error";
     public static final String REDIRECT = "redirect:";
     public static final String VIEW_NAME = "viewName";
 
-    @RequestMapping(value = {"/home"})
+    @RequestMapping(value = {"/openItem"})
     public String root(Locale locale, ModelMap model) {
         model.addAttribute("content", "content");
         Map<String, String> items = new HashMap<>();

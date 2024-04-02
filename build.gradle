@@ -7,6 +7,7 @@ buildscript {
         springWebVersion = '5.7.2'
         springTeamleafVersion = '3.1.2.RELEASE'
         springModulithVersion = "1.1.2"
+        lombokVersion="1.18.32"
     }
     repositories {
         mavenCentral()
@@ -33,9 +34,10 @@ repositories {
     maven { url "org.thymeleaf/thymeleaf-spring5"}
 
 }
+
 allprojects {
-    apply plugin: "idea"
     apply plugin: "java"
+    apply plugin: "idea"
     apply plugin: "java-library"
     /*apply plugin: "maven"*/
     apply plugin: "io.spring.dependency-management"
@@ -43,12 +45,47 @@ allprojects {
 
     group = 'com.tasks.calculator'
     version = '1.0.0-SNAPSHOT'
+    libsDirName = '../libs'
 }
 
 java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
 }
+
+
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/java']
+        }
+        resources {
+            srcDirs = ['src/resources']
+        }
+    }
+}
+tasks.register('copyLibs', Copy) {
+    destinationDir = file("libs")
+
+    into("libs") {
+        project.subprojects.each { p ->
+            from(p.tasks.withType(Jar)*.outputs)
+        }
+    }
+}
+/*
+tasks.register('copyLibs', Copy) {
+    into "libs"
+    
+    from sourceSets.main.output.getRuntimeClasspath()
+}
+*/
+
+build.dependsOn copyLibs
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
@@ -57,24 +94,27 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
+    implementation group: 'nz.net.ultraq.thymeleaf', name: 'thymeleaf-layout-dialect', version: '3.3.0'
+
     /*implementation 'org.thymeleaf:thymeleaf-spring5:${springTeamleafVersion}'*/
+
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.data:spring-data-rest-webmvc:4.2.4'
-    compileOnly 'org.projectlombok:lombok:1.18.32'
-    annotationProcessor 'org.projectlombok:lombok:1.18.32'
+    compileOnly 'org.projectlombok:lombok:${lombokVersion}'
+    annotationProcessor 'org.projectlombok:lombok:${lombokVersion}'
 
     implementation 'org.slf4j:slf4j-api:2.0.7'
 
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'com.mysql:mysql-connector-j'
-    //gson
-    implementation 'com.google.code.gson:gson:2.10.1'
 
     //apache
     implementation 'org.apache.commons:commons-lang3:3.14.0'
 
     implementation 'org.apache.commons:commons-dbcp2:2.9.0'
 
+    //gson
+    implementation 'com.google.code.gson:gson:2.10.1'
+    implementation 'org.springframework.data:spring-data-rest-webmvc:4.2.4'
 
     implementation 'org.webjars:bootstrap:5.3.3'
 

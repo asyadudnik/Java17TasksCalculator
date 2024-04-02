@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en"
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="layouts/default"
-      xmlns:th="http://www.w3.org/1999/xhtml">
+      xmlns:th="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.ultraq.net.nz/thymeleaf/layout ">
 <head lang="en" th:insert="fragments/header :: header(metaTitle='Calculator Tasks')">
     <!--/*@thymesVar id="metaTitle" type=""*/-->
     <title th:text="${metaTitle}"></title>
@@ -13,24 +14,27 @@
 <section layout:fragment="content">
     <div id="page">
         <div>Calculator Tasks</div>
-        <div>
-            <table>
-                <thead>
-                <tr>
-                    <th> Item Number </th>
-                    <th> Item Text</th>
-                </tr>
-                </thead>
-                <tbody>
-
-                <tr th:each="item : ${items}">
-                    <ul>
-                        <li th:each="item : ${items}" th:text="${item.key} ${item.value}"></li>
-                    </ul>
-                </tr>
-                </tbody>
-            </table>
-        </div>
+        <form th:action="@{/openItem}" th:object="${item}" method="get">
+            <div class="form-row">
+                <div class="col-md-6 form-group">
+                    <div th:with="condition=${items.size()!=0}">
+                        <p>Please select an option</p>
+                        <ol>
+                            <div th:each="item : ${item.values}">
+                                <li><a href=${item.pageURL} th:href="@{${item.pageURL}}">${item.title}</a></li>
+                            </div>
+                        </ol>
+<!--
+                        <select name="Item" th:field="${item}">
+                            <option th:each="value : ${T(com.tasks.calculator.dto.enums.ItemNames).values()}"
+                                    th:value="${value}"
+                                    th:text="${value.name}"/>
+                        </select>
+-->
+                    </div>
+                </div>
+            </div>
+    </form>
     </div>
 </section>
 <div lang="en" th:insert="fragments/footer :: footer"></div>
