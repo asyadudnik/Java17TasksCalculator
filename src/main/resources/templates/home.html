@@ -1,9 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="layouts/default"
-      xmlns:th="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.ultraq.net.nz/thymeleaf/layout ">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head lang="en" th:insert="fragments/header :: header(metaTitle='Calculator Tasks')">
     <!--/*@thymesVar id="metaTitle" type=""*/-->
     <title th:text="${metaTitle}"></title>
@@ -11,7 +7,7 @@
 
 <body class="container">
 
-<section layout:fragment="content">
+<section th:fragment="content">
     <div id="page">
         <div>Calculator Tasks</div>
         <form th:action="@{/rest/api/home/openItem}" th:object="${item}" method="get">
