@@ -5,7 +5,7 @@ buildscript {
         //https://github.com/spring-projects/spring-security/issues/7541
         //springWebVersion = '5.3.16'
         springWebVersion = '5.7.2'
-        springTeamleafVersion = '3.1.2.RELEASE'
+        springTymeleafVersion = '3.1.2.RELEASE'
         springModulithVersion = "1.1.2"
         lombokVersion="1.18.32"
     }
@@ -50,10 +50,10 @@ allprojects {
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
+        languageVersion = JavaLanguageVersion.of(21)
     }
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
 }
 
 
@@ -99,8 +99,8 @@ dependencies {
     /*implementation 'org.thymeleaf:thymeleaf-spring5:${springTeamleafVersion}'*/
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    compileOnly 'org.projectlombok:lombok:${lombokVersion}'
-    annotationProcessor 'org.projectlombok:lombok:${lombokVersion}'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
 
     implementation 'org.slf4j:slf4j-api:2.0.7'
 

@@ -28,7 +28,7 @@ public class RoleService {
     public Role save(Role role) {
         if (role != null && role.getId() != null && get(role.getId()) != null) {
             if(log.isDebugEnabled()){
-                log.info("Role {} already exist!", role.getRoleName());
+                System.out.println("Role {} already exist!"+ role.getRoleName());
             }
             return role;
         } else {

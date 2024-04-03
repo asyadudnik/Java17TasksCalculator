@@ -55,7 +55,7 @@ public class UserController {
         model.addAttribute("viewName", USERS_PAGE);
         try {
             users.forEach(usr ->
-                    log.info(toJson(usr))
+                    System.out.println(toJson(usr))
             );
             return USERS_PAGE;
         } catch (Exception ex) {
@@ -72,7 +72,7 @@ public class UserController {
         User user = new User();
         model.addAttribute("user", user);
         if (log.isDebugEnabled()) {
-            log.info(toJson(user));
+            System.out.println(toJson(user));
         }
         return NEW_PAGE;
     }
@@ -86,7 +86,7 @@ public class UserController {
             List<User> users = this.userService.findAll();
             modelAndView.addObject("users", users);
             users.forEach(usr ->
-                    log.info(toJson(usr))
+                    System.out.println(toJson(usr))
             );
             return REDIRECT + USERS_PAGE;
         } catch (Exception ex) {

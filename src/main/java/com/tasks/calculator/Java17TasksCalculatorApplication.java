@@ -2,7 +2,6 @@ package com.tasks.calculator;
 
 import com.tasks.calculator.dto.User;
 import com.tasks.calculator.services.UserService;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,7 +13,7 @@ import org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver;
 import static com.tasks.calculator.global.InstallConstants.PASS;
 import static com.tasks.calculator.global.InstallConstants.USER;
 
-@Slf4j
+//@Slf4j
 @SpringBootApplication
 public class Java17TasksCalculatorApplication implements CommandLineRunner {
 
@@ -60,16 +59,7 @@ public class Java17TasksCalculatorApplication implements CommandLineRunner {
 
 		User newUser = this.userService.save(user);
 		if (newUser != null) {
-			log.info("springUser saved...");
+			System.out.println("springUser saved...");
 		}
-
-/*
-		final Task taskTest = Task
-				.builder()
-                .
-				.build();
-				log.info("Test task object created!");
-*/
-
 	}
 }

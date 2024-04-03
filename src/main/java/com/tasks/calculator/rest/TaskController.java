@@ -38,7 +38,7 @@ public class TaskController {
 
         try {
             tasks.forEach(usr ->
-                    log.info(toJson(usr))
+                    System.out.println(toJson(usr))
             );
             return (String) model.getAttribute(VIEW_NAME);
         } catch (Exception ex) {

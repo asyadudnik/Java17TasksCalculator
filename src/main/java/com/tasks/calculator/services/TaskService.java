@@ -34,7 +34,7 @@ public class TaskService {
     public Task save(Task task) {
         if (task != null) {
             if (log.isDebugEnabled()) {
-                log.info(JsonUtils.toJson(task));
+                System.out.println(JsonUtils.toJson(task));
             }
         } else {
             log.error("Task not filled.");
@@ -42,11 +42,11 @@ public class TaskService {
         }
         Optional<Task> taskOptional = this.repo.findByTaskName(task.getTaskName());
         if (taskOptional.isPresent()) {
-            log.info("Saving of user = {}", taskOptional);
+            System.out.println("Saving of user = {}"+ taskOptional);
             if (task.equals(taskOptional.get())) {
                 return taskOptional.get();
             } else {
-                log.info("User {} already exist", task.getTaskName());
+                System.out.println("User {} already exist"+ task.getTaskName());
 
                 Task realTask = taskOptional.get();
                 Task updated = Task.builder()

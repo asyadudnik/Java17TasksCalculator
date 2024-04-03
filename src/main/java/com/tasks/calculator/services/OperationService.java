@@ -37,7 +37,7 @@ public class OperationService {
     {
         if (operation != null) {
             if (log.isDebugEnabled()) {
-                log.info(JsonUtils.toJson(operation));
+                System.out.println(JsonUtils.toJson(operation));
             }
         } else {
             log.error("Operation not filled.");
@@ -46,11 +46,11 @@ public class OperationService {
         Optional<Operation> operationOptional = this.operationRepository.findByTaskNameAndOperationName(
                 task.getTaskName(), operation.getOperationName()    );
         if (operationOptional.isPresent()) {
-            log.info("Saving of operation = {}", operationOptional);
+            System.out.println("Saving of operation = {}"+operationOptional);
             if (operation.equals(operationOptional.get())) {
                 return operationOptional.get();
             } else {
-                log.info("Operation {} already exist", operation.getOperationName());
+                System.out.println("Operation {} already exist "+ operation.getOperationName());
 
                 Operation realOperation = operationOptional.get();
                 Operation updated = Operation.builder()

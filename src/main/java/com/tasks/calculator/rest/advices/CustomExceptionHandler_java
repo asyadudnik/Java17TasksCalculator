@@ -19,7 +19,7 @@ public class CustomExceptionHandler {//extends ResponseEntityExceptionHandler{
 
     @ExceptionHandler(SQLException.class)
     public String handleSQLException(HttpServletRequest request, Exception ex) {
-        log.info("SQLException Occurred:: URL=" , request.getRequestURL());
+        System.out.println("SQLException Occurred:: URL=" , request.getRequestURL());
         var errMsg = ex.getMessage();
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("errMsg", errMsg);

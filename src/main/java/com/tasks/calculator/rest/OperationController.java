@@ -5,7 +5,7 @@ import com.tasks.calculator.dto.Task;
 import com.tasks.calculator.repositories.OperationRepository;
 import com.tasks.calculator.services.OperationService;
 import io.micrometer.common.util.StringUtils;
-import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -17,7 +17,7 @@ import static com.tasks.calculator.rest.global.HomeController.*;
 import static com.tasks.calculator.utils.JsonUtils.toJson;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
-@Slf4j
+//@Slf4j
 @Controller
 @RequestMapping("/rest/api/tasks/operations")
 public class OperationController {
@@ -39,14 +39,14 @@ public class OperationController {
 
         try {
             operations.forEach(operation ->
-                    log.info(toJson(operation))
+                    System.out.println(toJson(operation))
             );
             return (String) model.getAttribute(VIEW_NAME);
         } catch (Exception ex) {
             String exMessage = ex.getMessage();
             model.addAttribute(ERR_MSG, exMessage);
             model.addAttribute(VIEW_NAME, ERR_PAGE);
-            log.error(exMessage);
+            System.out.println(exMessage);
             return REDIRECT + ERR_PAGE;
         }
     }

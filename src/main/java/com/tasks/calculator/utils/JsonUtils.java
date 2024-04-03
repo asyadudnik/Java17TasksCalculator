@@ -1,11 +1,9 @@
 package com.tasks.calculator.utils;
 
 import com.google.gson.Gson;
-import com.tasks.calculator.dto.User;
-import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
-@Slf4j
+//@Slf4j
 public class JsonUtils {
     private JsonUtils() {
     }
@@ -25,7 +23,7 @@ public class JsonUtils {
     public static String toJson(List<User> entities){
         for (User user : entities) {
             if (log.isDebugEnabled())
-                log.info(toJson(user), "\n\r");
+                System.out.println(toJson(user), "\n\r");
         }
         return gson.toJson(entities);
     }
@@ -33,8 +31,8 @@ public class JsonUtils {
 
     public static<T> String toJson(List<T> entities){
         for (T entity : entities) {
-            if (log.isDebugEnabled())
-                log.info(toJson(entity), "\n\r");
+            //if (log.isDebugEnabled())
+                System.out.println(toJson(entity)+ "\n\r");
         }
         return gson.toJson(entities);
     }

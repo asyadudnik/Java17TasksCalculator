@@ -34,7 +34,7 @@ public class UserService {
     public User save(User user) {
         if (user != null) {
             if (log.isDebugEnabled()) {
-                log.info(JsonUtils.toJson(user));
+                System.out.println(JsonUtils.toJson(user));
             }
         } else {
             log.error("User not filled.");
@@ -42,11 +42,11 @@ public class UserService {
         }
         Optional<User> userOptional = this.repo.findByUserName(user.getUserName());
         if (userOptional.isPresent()) {
-            log.info("Saving of user = {}", userOptional);
+            System.out.println("Saving of user = {}"+ userOptional);
             if (user.equals(userOptional.get())) {
                 return userOptional.get();
             } else {
-                log.info("User {} already exist", user.getUserName());
+                System.out.println("User {} already exist"+ user.getUserName());
                 User realUser = userOptional.get();
                 User updated = User.builder()
                         .id(realUser.getId())
